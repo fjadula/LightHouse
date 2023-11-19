@@ -10,6 +10,7 @@ namespace LightHouse
         string ReverseWords(string input);
     }
 
+
     class WordManipulator : IWordManipulator
     {
         public string ReverseWords(string input)
