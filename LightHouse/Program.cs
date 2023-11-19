@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using NUnitLite;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
 
 namespace LightHouse
 {
@@ -9,7 +9,6 @@ namespace LightHouse
     {
         string ReverseWords(string input);
     }
-
 
     class WordManipulator : IWordManipulator
     {
@@ -69,7 +68,7 @@ namespace LightHouse
         {
             int N;
 
-            // Input for the number of cases (N) with error handling
+            // Input for the number of cases (N) with improved error handling
             while (true)
             {
                 Console.Write("Enter the number of cases (N): ");
@@ -87,7 +86,18 @@ namespace LightHouse
             for (int i = 0; i < N; i++)
             {
                 Console.Write($"Enter line {i + 1}: ");
-                lines.Add(Console.ReadLine());
+                string line = Console.ReadLine();
+
+                // Check for null or empty input
+                if (string.IsNullOrWhiteSpace(line))
+                {
+                    Console.WriteLine("Invalid input. Please enter a non-empty line.");
+                    i--; // Decrement i to re-enter the current line
+                }
+                else
+                {
+                    lines.Add(line);
+                }
             }
 
             List<string> results = wordProcessor.ProcessLines(lines);
